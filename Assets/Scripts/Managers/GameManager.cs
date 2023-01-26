@@ -17,10 +17,10 @@ public class GameManager : MonoBehaviour
 
 	public int Lives;
 	public ushort Score = 0;
-	private float roundTime;
 
 
 	//private
+	private float roundTime;
 	private float nextWaveIn;
 
 

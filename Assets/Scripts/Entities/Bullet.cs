@@ -22,9 +22,13 @@ public class Bullet : PoolElement
         {
             PoolManager.BulletPool.Release(this);
         }
+        if(other.CompareTag(Enemy.Tag))
+        {
+            PoolManager.BulletPool.Release(this);
+        }
     }
 
-    //public metods
+    //public methods
 
 	public override void Init()
 	{

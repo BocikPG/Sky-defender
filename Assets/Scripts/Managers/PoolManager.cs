@@ -16,6 +16,8 @@ public class PoolManager : MonoBehaviour
 	public int EnemyPoolDefaultCapacity;
 	public static ObjectPool<PoolElement> EnemyPool;
 
+    public Vector3 StoragePosition;
+
 	//unity methods
 	void Start()
 	{
@@ -27,17 +29,18 @@ public class PoolManager : MonoBehaviour
 
 	private ObjectPool<PoolElement> CreateObjectPool(PoolElement prefab, int defaultCapacity)
 	{
-		return new ObjectPool<PoolElement>(() =>
-		{
-			return Instantiate(prefab);
-		},
+		return new ObjectPool<PoolElement>(
+                () =>
+                {
+                    return Instantiate(prefab);
+                },
 				bullet =>
 				{
 					bullet.TakeFromStorage();
 				},
 				bullet =>
 				{
-					bullet.GoToStorage();
+					bullet.GoToStorage(StoragePosition);
 				},
 				bullet =>
 				{

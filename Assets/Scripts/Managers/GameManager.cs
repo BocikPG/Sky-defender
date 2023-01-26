@@ -17,6 +17,13 @@ public class GameManager : MonoBehaviour
 
 
 	//unity methods
+	void Start()
+	{
+		Enemy.OnEnemyKill.AddListener(OnEnemyKill);
+		Enemy.OnPlayerCollision.AddListener(OnPlayerCollision);
+	}
+
+
 	void Update()
 	{
 		if (nextWaveIn < 0)
@@ -27,15 +34,26 @@ public class GameManager : MonoBehaviour
 		nextWaveIn -= Time.deltaTime;
 	}
 
+	//private methods
+
 	private void SpawnWave()
 	{
-		int enemiesToSpawn = Random.Range(2,5);
+		int enemiesToSpawn = Random.Range(2, 5);
 
-        var SpawnPositionsLen = SpawnPositions.Length;
-        for(int i=0;i<enemiesToSpawn;i++)
-        {
-            var enemy = (Enemy)PoolManager.EnemyPool.Get();
-            enemy.Spawn(SpawnPositions[Random.Range(0,SpawnPositionsLen)].position);
-        }
+		var SpawnPositionsLen = SpawnPositions.Length;
+		for (int i = 0; i < enemiesToSpawn; i++)
+		{
+			var enemy = (Enemy)PoolManager.EnemyPool.Get();
+			enemy.Spawn(SpawnPositions[Random.Range(0, SpawnPositionsLen)].position);
+		}
+	}
+	private void OnPlayerCollision()
+	{
+		
+	}
+
+	private void OnEnemyKill()
+	{
+		
 	}
 }

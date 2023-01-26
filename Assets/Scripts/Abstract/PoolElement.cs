@@ -9,12 +9,13 @@ public abstract class PoolElement : MonoBehaviour
 
 	public void TakeFromStorage()
 	{
-		enabled = true;
+		gameObject.SetActive(true);
 	}
 
 
-	public void GoToStorage()
+	public void GoToStorage(Vector3 position)
 	{
-		enabled = false;
+		transform.position = position;
+		gameObject.SetActive(false);
 	}
 }

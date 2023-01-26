@@ -38,6 +38,11 @@ public class Enemy : PoolElement
 		throw new System.NotImplementedException();
 	}
 
+    public void Spawn(Vector3 startPosition)
+    {
+        transform.position = startPosition;
+    }
+
     public void Die()
     {
         OnEnemyDies.Invoke();

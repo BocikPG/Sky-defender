@@ -23,7 +23,7 @@ public class Enemy : PoolElement
     {
         if(other.CompareTag(GameManager.BarrierTag))
         {
-            PoolManager.BulletPool.Release(this);
+            PoolManager.EnemyPool.Release(this);
         }
         if(other.CompareTag(Bullet.Tag))
         {
@@ -31,7 +31,7 @@ public class Enemy : PoolElement
         }
     }
 
-    //public metods
+    //public methods
 
 	public override void Init()
 	{
@@ -41,7 +41,7 @@ public class Enemy : PoolElement
     public void Die()
     {
         OnEnemyDies.Invoke();
-        PoolManager.BulletPool.Release(this);
+        PoolManager.EnemyPool.Release(this);
     }
 
 }

@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 	public static string BarrierTag = "Barrier";
 	//events
 	public static UnityEvent EndGame = new();
+	public static UnityEvent<ushort> OnScoreUpdate = new();
+	public static UnityEvent<int> OnLivesUpdate = new();
 
 	//public/inspector
 	public Transform[] SpawnPositions;
@@ -17,25 +19,28 @@ public class GameManager : MonoBehaviour
 
 	public int Lives;
 	public ushort Score = 0;
+	public static float RoundTime { get; private set; }
 
 
 	//private
-	private float roundTime;
 	private float nextWaveIn;
 
 
 	//unity methods
-	void Start()
+	IEnumerator Start()
 	{
 		Enemy.OnEnemyKill.AddListener(OnEnemyKill);
 		Enemy.OnPlayerCollision.AddListener(OnPlayerCollision);
+        yield return new WaitForEndOfFrame();
+        OnScoreUpdate.Invoke(Score);
+        OnLivesUpdate.Invoke(Lives);
 	}
 
 
 	void Update()
 	{
-		roundTime += Time.deltaTime;
-		if (roundTime >= TimePerRound)
+		RoundTime += Time.deltaTime;
+		if (RoundTime >= TimePerRound)
 		{
 			EndGame.Invoke();
 		}
@@ -66,10 +71,12 @@ public class GameManager : MonoBehaviour
 		{
 			EndGame.Invoke();
 		}
+		OnLivesUpdate.Invoke(Lives);
 	}
 
 	private void OnEnemyKill()
 	{
 		Score += 100;
+		OnScoreUpdate.Invoke(Score);
 	}
 }

@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
 
 	//private methods
 
-	void Attack()
+	private void Attack()
 	{
 		timeToNextAttack = attackSpeed;
         var bullet = (Bullet)PoolManager.BulletPool.Get();

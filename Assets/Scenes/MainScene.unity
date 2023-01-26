@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 419977111}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -652,6 +652,7 @@ MonoBehaviour:
   BulletPoolDefaultCapacity: 10
   EnemyPrefab: {fileID: 9072773253712594806, guid: 4aa49b67890a64d4b899c2a500722126, type: 3}
   EnemyPoolDefaultCapacity: 10
+  StoragePosition: {x: 50, y: 50, z: 50}
 --- !u!4 &1200207156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8858609511654798534, guid: 24308c1be70549145a7b69146965f85d, type: 3}

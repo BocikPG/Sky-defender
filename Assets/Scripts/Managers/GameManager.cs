@@ -74,8 +74,8 @@ public class GameManager : MonoBehaviour
 		{
 			return;
 		}
-		RoundTime += Time.deltaTime;
-		if (RoundTime >= TimePerRound)
+		RoundTime -= Time.deltaTime;
+		if (RoundTime <= 0)
 		{
 			EndGameFun();
 		}
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
 
 	private void Reset()
 	{
-		RoundTime = 0;
+		RoundTime = TimePerRound;
 		Score = 0;
 		Lives = livesMemory;
 		PoolManager.BulletPool.Clear();

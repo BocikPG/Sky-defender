@@ -120,7 +120,8 @@ public class GameManager : MonoBehaviour
 	{
 		try
 		{
-			using var file = File.Open(Application.persistentDataPath + "/JSON/HighScore.txt", FileMode.Create);
+			Directory.CreateDirectory(Application.persistentDataPath + "/Safe/)");
+			using var file = File.Open(Application.persistentDataPath + "/Safe/HighScore.txt", FileMode.Create);
 			var writer = new BinaryWriter(file);
 			writer.Write(score);
 
@@ -148,7 +149,8 @@ public class GameManager : MonoBehaviour
 
 		try
 		{
-			using var file = File.Open(Application.persistentDataPath + "/JSON/HighScore.txt", FileMode.Open);
+			Directory.CreateDirectory(Application.persistentDataPath + "/Safe/)");
+			using var file = File.Open(Application.persistentDataPath + "/Safe/HighScore.txt", FileMode.Open);
 			var reader = new BinaryReader(file);
 			score = reader.ReadUInt16();
 			highScore = reader.ReadUInt16();

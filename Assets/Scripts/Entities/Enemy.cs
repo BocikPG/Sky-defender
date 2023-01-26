@@ -22,6 +22,10 @@ public class Enemy : PoolElement
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(!gameObject.activeSelf)
+        {
+            return;
+        }
         if(other.CompareTag(GameManager.BarrierTag))
         {
             PoolManager.EnemyPool.Release(this);

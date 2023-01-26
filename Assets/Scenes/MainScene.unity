@@ -709,6 +709,9 @@ MonoBehaviour:
   - {fileID: 209913828}
   - {fileID: 1306505877}
   TimeBetweenWaves: 5
+  TimePerRound: 30
+  Lives: 3
+  Score: 0
 --- !u!1 &1297551835
 GameObject:
   m_ObjectHideFlags: 0

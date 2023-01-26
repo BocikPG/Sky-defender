@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
 	//static
 	public static string BarrierTag = "Barrier";
+	//events
+	public static UnityEvent EndGame = new();
 
 	//public/inspector
 	public Transform[] SpawnPositions;
 	[SerializeField] private float TimeBetweenWaves;
+	[SerializeField] private float TimePerRound;
+
+	public int Lives;
+	public ushort Score = 0;
+	private float roundTime;
 
 
 	//private
@@ -26,6 +34,11 @@ public class GameManager : MonoBehaviour
 
 	void Update()
 	{
+		roundTime += Time.deltaTime;
+		if (roundTime >= TimePerRound)
+		{
+			EndGame.Invoke();
+		}
 		if (nextWaveIn < 0)
 		{
 			SpawnWave();
@@ -49,11 +62,14 @@ public class GameManager : MonoBehaviour
 	}
 	private void OnPlayerCollision()
 	{
-		
+		if (--Lives <= 0)
+		{
+			EndGame.Invoke();
+		}
 	}
 
 	private void OnEnemyKill()
 	{
-		
+		Score += 100;
 	}
 }

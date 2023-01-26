@@ -18,6 +18,10 @@ public class Bullet : PoolElement
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(!gameObject.activeSelf)
+        {
+            return;
+        }
         if(other.CompareTag(GameManager.BarrierTag))
         {
             PoolManager.BulletPool.Release(this);

@@ -67,5 +67,13 @@ public class Enemy : PoolElement
         OnEnemyKill.Invoke();
     }
 
+     public override void Return()
+    {
+        if(gameObject.activeSelf)
+        {
+            PoolManager.EnemyPool.Release(this);
+        }
+    }
+
 
 }

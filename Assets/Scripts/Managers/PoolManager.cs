@@ -32,11 +32,12 @@ public class PoolManager : MonoBehaviour
 		return new ObjectPool<PoolElement>(
                 () =>
                 {
-                    return Instantiate(prefab);
+					var bullet = Instantiate(prefab);
+					GameManager.Instance.HighScoreScreen.AddListener((a,b) => bullet.Return());
+                    return bullet;
                 },
 				bullet =>
 				{
-					
 					bullet.TakeFromStorage();
 				},
 				bullet =>
@@ -45,7 +46,6 @@ public class PoolManager : MonoBehaviour
 				},
 				bullet =>
 				{
-					Debug.Log("yep");
 					Destroy(bullet.gameObject);
 				}, true, defaultCapacity);
 	}

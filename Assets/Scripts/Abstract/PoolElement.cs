@@ -18,4 +18,6 @@ public abstract class PoolElement : MonoBehaviour
 		transform.position = position;
 		gameObject.SetActive(false);
 	}
+
+	public abstract void Return();
 }

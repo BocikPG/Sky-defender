@@ -48,4 +48,12 @@ public class Bullet : PoolElement
 		transform.position = startPosition;
 	}
 
+    public override void Return()
+    {
+        if(gameObject.activeSelf)
+        {
+            PoolManager.BulletPool.Release(this);
+        }
+    }
+
 }

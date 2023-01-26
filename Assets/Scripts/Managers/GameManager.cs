@@ -110,8 +110,6 @@ public class GameManager : MonoBehaviour
 		RoundTime = TimePerRound;
 		Score = 0;
 		Lives = livesMemory;
-		PoolManager.BulletPool.Clear();
-		PoolManager.EnemyPool.Clear();
 		OnScoreUpdate.Invoke(Score);
 		OnLivesUpdate.Invoke(Lives);
 	}
@@ -120,7 +118,7 @@ public class GameManager : MonoBehaviour
 	{
 		try
 		{
-			Directory.CreateDirectory(Application.persistentDataPath + "/Safe/)");
+			Directory.CreateDirectory(Application.persistentDataPath + "/Safe");
 			using var file = File.Open(Application.persistentDataPath + "/Safe/HighScore.txt", FileMode.Create);
 			var writer = new BinaryWriter(file);
 			writer.Write(score);
@@ -149,7 +147,7 @@ public class GameManager : MonoBehaviour
 
 		try
 		{
-			Directory.CreateDirectory(Application.persistentDataPath + "/Safe/)");
+			Directory.CreateDirectory(Application.persistentDataPath + "/Safe");
 			using var file = File.Open(Application.persistentDataPath + "/Safe/HighScore.txt", FileMode.Open);
 			var reader = new BinaryReader(file);
 			score = reader.ReadUInt16();

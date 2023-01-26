@@ -8,8 +8,9 @@ public class Player : MonoBehaviour
 	public static string Tag = "Player";
 
 	//public/inspector properties
-	[SerializeField] private float Speed;
-	[SerializeField] private float AttackSpeed;
+	[SerializeField] private float speed;
+	[SerializeField] private float attackSpeed;
+	[SerializeField] private Rigidbody2D playerRigidbody2D;
 
 	//private properties
 	private float timeToNextAttack;
@@ -25,8 +26,7 @@ public class Player : MonoBehaviour
 			}
 		}
 
-
-		transform.position += new Vector3(0, Input.GetAxisRaw("Vertical") * Speed, 0);
+		playerRigidbody2D.velocity = new Vector2(0, Input.GetAxisRaw("Vertical") * speed);
 
 	}
 
@@ -34,6 +34,6 @@ public class Player : MonoBehaviour
 
 	void Attack()
 	{
-		timeToNextAttack = AttackSpeed;
+		timeToNextAttack = attackSpeed;
 	}
 }

@@ -9,12 +9,12 @@ public class InGameStatsController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI Lives;
     [SerializeField] private TextMeshProUGUI Score;
     [SerializeField] private TextMeshProUGUI Time;
-
+    
 
     void Start()
     {
-        GameManager.OnLivesUpdate.AddListener(OnLivesUpdate);
-        GameManager.OnScoreUpdate.AddListener(OnScoreUpdate);
+        GameManager.Instance.OnLivesUpdate.AddListener(OnLivesUpdate);
+        GameManager.Instance.OnScoreUpdate.AddListener(OnScoreUpdate);
     }
 
 	private void OnScoreUpdate(ushort score)
@@ -29,7 +29,7 @@ public class InGameStatsController : MonoBehaviour
 
 	void Update()
     {
-        Time.text = GameManager.RoundTime.ToString();
+        Time.text = GameManager.Instance.RoundTime.ToString();
     }
 
 

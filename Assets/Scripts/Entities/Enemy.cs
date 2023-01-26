@@ -17,6 +17,10 @@ public class Enemy : PoolElement
     //unity methods
     void Update()
     {
+        if (GameManager.Instance.GamePaused)
+		{
+			return;
+		}
         transform.position += Vector3.left * speed;
     }
 
@@ -62,5 +66,6 @@ public class Enemy : PoolElement
         PoolManager.EnemyPool.Release(this);
         OnEnemyKill.Invoke();
     }
+
 
 }

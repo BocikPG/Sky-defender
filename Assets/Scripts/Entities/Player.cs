@@ -18,6 +18,10 @@ public class Player : MonoBehaviour
 	//unity methods
 	void Update()
 	{
+        if (GameManager.Instance.GamePaused)
+		{
+			return;
+		}
 		if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
 		{
 			if (timeToNextAttack <= 0)

@@ -36,6 +36,7 @@ public class PoolManager : MonoBehaviour
                 },
 				bullet =>
 				{
+					
 					bullet.TakeFromStorage();
 				},
 				bullet =>
@@ -44,6 +45,7 @@ public class PoolManager : MonoBehaviour
 				},
 				bullet =>
 				{
+					Debug.Log("yep");
 					Destroy(bullet.gameObject);
 				}, true, defaultCapacity);
 	}

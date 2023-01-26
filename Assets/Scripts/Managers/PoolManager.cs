@@ -12,11 +12,15 @@ public class PoolManager : MonoBehaviour
 	public Bullet BulletPrefab;
 	public int BulletPoolDefaultCapacity;
 	public static ObjectPool<PoolElement> BulletPool;
+	public Enemy EnemyPrefab;
+	public int EnemyPoolDefaultCapacity;
+	public static ObjectPool<PoolElement> EnemyPool;
 
 	//unity methods
 	void Start()
 	{
         BulletPool = CreateObjectPool(BulletPrefab,BulletPoolDefaultCapacity);
+        EnemyPool = CreateObjectPool(EnemyPrefab,EnemyPoolDefaultCapacity);
 	}
 
 	//private methods

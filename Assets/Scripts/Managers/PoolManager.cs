@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class PoolManager<T> : MonoBehaviour where T : PoolElement
+public class PoolManager : MonoBehaviour
 {
 	//static properties
 	public static string Tag = "Player";
 
 	//public/inspector properties
-	public T BulletPrefab;
+	public Bullet BulletPrefab;
 	public int BulletPoolDefaultCapacity;
-	public ObjectPool<T> BulletPool;
-
-	//private properties
-
+	public static ObjectPool<PoolElement> BulletPool;
 
 	//unity methods
 	void Start()
@@ -24,9 +21,9 @@ public class PoolManager<T> : MonoBehaviour where T : PoolElement
 
 	//private methods
 
-	ObjectPool<T> CreateObjectPool(T prefab, int defaultCapacity)
+	private ObjectPool<PoolElement> CreateObjectPool(PoolElement prefab, int defaultCapacity)
 	{
-		return new ObjectPool<T>(() =>
+		return new ObjectPool<PoolElement>(() =>
 		{
 			return Instantiate(prefab);
 		},
@@ -41,6 +38,6 @@ public class PoolManager<T> : MonoBehaviour where T : PoolElement
 				bullet =>
 				{
 					Destroy(bullet.gameObject);
-				}, false, defaultCapacity);
+				}, true, defaultCapacity);
 	}
 }

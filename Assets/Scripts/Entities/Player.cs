@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 			}
 		}
 
+        timeToNextAttack -= Time.deltaTime;
 		playerRigidbody2D.velocity = new Vector2(0, Input.GetAxisRaw("Vertical") * speed);
 
 	}
@@ -35,5 +36,7 @@ public class Player : MonoBehaviour
 	void Attack()
 	{
 		timeToNextAttack = attackSpeed;
+        var bullet = (Bullet)PoolManager.BulletPool.Get();
+        bullet.Shot(transform.position);
 	}
 }

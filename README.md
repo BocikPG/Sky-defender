@@ -1,4 +1,4 @@
-# Cube-wars
+# Sky-defender
 
 A small game project to show of my skills in Unity.
 Made in around 8 hours total.

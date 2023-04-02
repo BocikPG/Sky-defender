@@ -1,18 +1,29 @@
-# Brave-Lamb-Test-Wojciech-Farej
+# Cube-wars
 
-## Assety:
-TextMeshPro 
+A small game project to show of my skills in Unity.
+Made in around 8 hours total.
 
-## Pozostałę informacje
-Czas wykonania: ok. 6 godzin z przerwami
-Plugin wykorzystany zosatał do stworzenia UI
+## Gameplay
 
-Decyzje: 
-- wykorzystanie puli obiektów, aby nie instancjonować ponownie elementów (ale ta z Unity jest przeciętna :/ )
-- desperacka (raczej udana) próba przerobienia GameManagera na wzorzec Singleton
-- zastosowanie prostego shadera na tło 😊
+Player can move up and down, and shoot projectiles to incoming waves of enemies.
 
-Co nie działa:
-- Wrogowie czasamia spawnią się jeden na drugim (wiem jak to naprawić, ale już brak czasu 🙃)
+Player have 3 lives, and after losing all of them, the game ends.
 
-Mimo iż po 3-ech godzinach miałem core rozgrywki, to wykańczanie zeszło dłużej niż podejrzewałem, głównie przez unitowską pulę obiektów.
+By destroying enemy planes, the player gets set amount of points.
+
+Game time is restricted and shown by timer on the bottom of the screen.
+
+## Controls
+
+On High-Score Screen any button starts the game.
+
+In game use W/S to move up/down and SPACE to shoot.
+
+## Highlights
+
+I'm using object pool to reuse enemies and bullets.
+
+Using singleton design pattern on Game Manger.
+
+Using simple shader to scroll background.
+
